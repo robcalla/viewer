@@ -1,0 +1,39 @@
+	<!-- Modal Structure -->
+	<div id="newsubcatmodal" class="modal">
+		<form id="newsubcatform" action="#!">
+			<input type="hidden" id="selectedurbanservice"/>
+			<input type="hidden" id="selecteddashboard"/>
+			<div class="modal-content">
+
+				<h4><i18n:message value="new_urbanservice"/></h4><br>
+
+
+				<div class="row">
+				 	<div class="col s12">
+						<label><i18n:message value="please_dashboard"/><sup class="primary-text">(*)</sup></label>
+				        <div class="input-field">
+				           <select id="subcategorynamefield" name="subcategorynamefield" class="subcategorySelectOption browser-default" >
+				           </select>
+				        </div>
+			       </div>
+				</div>
+
+				<div class="row">
+					<div class="col s12">
+						<label><i18n:message value="select_the_dashboard"/></label>
+						<div class="input-field">
+							<input id="documentname" autocomplete="off" list="documentnamefield" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" id="cockpitname" name="cockpitname" class="documentSelectOption validate" maxlength="200"/>
+							<datalist id="documentnamefield" name="documentnamefield" class="documentSelectOption browser-default"></datalist>
+						</div>
+					</div>
+				</div>
+				<span class="left-align primary-text" style="font-size:12;padding-left:15px"><sup>(*)</sup> <i18n:message value="mandatory"/></span>
+			</div>
+
+			<div class="modal-footer">
+				<button id="newurbanservicebutton" class="waves-effect btn-flat"><i18n:message value="create"/></button>
+				<a href="#!" class="modal-action modal-close waves-effect btn-flat"><i18n:message value="cancel"/></a>
+			</div>
+
+		</form>
+	</div>

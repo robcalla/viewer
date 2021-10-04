@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+          xmlns="http://maven.apache.org/SETTINGS/1.1.0">
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<sonar.host.url>https://sonar.cloudesire.com</sonar.host.url>
+				<sonar.login>${env.SONAR_USER}</sonar.login>
+				<sonar.password>${env.SONAR_PASS}</sonar.password>
+			</properties>
+		</profile>
+	</profiles>
+	<pluginGroups>
+		<pluginGroup>com.atlassian.maven.plugins</pluginGroup>
+		<pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+	</pluginGroups>
+	<interactiveMode>false</interactiveMode>
+</settings>

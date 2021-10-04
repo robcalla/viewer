@@ -1,0 +1,42 @@
+<!-- Modal Structure -->
+<div id="cockpitlinkmodal" class="modal">
+	<form id="cockpitnameform" action="#!">
+		<div class="modal-content">
+
+			<h4><i18n:message value="cockpit_modal_title"/></h4>
+
+			<div class="row">
+				<div class="input-field col s12 m12 ">
+	                  <select id="chooseType">
+	                  	<option value="knowage" selected>Dashboard Manager</option>
+	                  	<option value="grafana">Grafana/Superset</option>
+	                  </select>
+	                  <label>Choose dashboard type</label>
+              	</div>
+              	<div id="knowage_choose" class="input-field col s12">
+              		<label for="cockpitname">Choose a dashboard from this list:</label>
+					<input id="documentname" autocomplete="off" list="documentnamefield" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" id="cockpitname" name="cockpitname" class="documentSelectOption validate" maxlength="200"/>
+					<datalist id="documentnamefield" name="documentnamefield" class="documentSelectOption browser-default"></datalist>
+
+				</div>
+				<div id="grafana_choose" class="input-field col s12" style="display:none">
+					<div class="input-field col s12">
+						<input id="dashboardname" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" name="grafananame" class="documentSelectOption validate" maxlength="200"/>
+						<label for="grafananame">Enter the name of the dashboard or panel:</label>
+					</div>
+					<div class="input-field col s12">
+						<input id="dashboardurl" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" type="text" name="grafanaurl" class="documentSelectOption validate" maxlength="200"/>
+						<label for="grafanaurl">Enter the url of the dashboard or panel:</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<!-- Changed submit event with onclick event since ajax call was not called properly -->
+			<button id="cockpitnamebutton" class="waves-effect btn-flat" onclick="addNewDashboard()" name="action"><i18n:message value="link"/></button>
+			<a href="#!" class="modal-action modal-close waves-effect btn-flat"><i18n:message value="cancel"/></a>
+		</div>
+
+	</form>
+</div>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250px"
+	 height="250px" viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
+<font horiz-adv-x="1000">
+<!-- Copyright 1992, 1994, 1997, 2000, 2004 Adobe Systems Incorporated. All rights reserved. Myriad is either a registered trademark or a trademark of Adobe Systems Incorporated in the United States and/or other countries. -->
+<font-face font-family="MyriadPro-Regular" units-per-em="1000" underline-position="-100" underline-thickness="50"/>
+<missing-glyph horiz-adv-x="500" d="M0,0l500,0l0,700l-500,0M250,395l-170,255l340,0M280,350l170,255l0,-510M80,50l170,255l170,-255M50,605l170,-255l-170,-255z"/>
+<glyph unicode="A" horiz-adv-x="612" d="M424,212l72,-212l93,0l-230,674l-104,0l-230,-674l90,0l70,212M203,280l66,195C283,516 293,558 303,597l2,0C315,558 325,518 340,474l67,-194z"/>
+<glyph unicode="E" horiz-adv-x="492" d="M424,388l-261,0l0,213l277,0l0,73l-365,0l0,-674l380,0l0,73l-292,0l0,243l261,0z"/>
+<glyph unicode="L" horiz-adv-x="472" d="M75,0l376,0l0,73l-288,0l0,601l-88,0z"/>
+<glyph unicode="P" horiz-adv-x="532" d="M76,0l87,0l0,270C183,265 207,264 233,264C318,264 392,289 439,338C473,373 491,421 491,482C491,542 468,591 432,623C392,659 329,679 243,679C173,679 118,673 76,666M163,603C178,607 207,610 245,610C340,610 404,567 404,477C404,386 340,334 235,334C206,334 182,336 163,341z"/>
+<glyph unicode="R" horiz-adv-x="538" d="M76,0l87,0l0,292l82,0C324,289 361,254 381,161C399,77 414,20 425,0l90,0C501,26 485,91 463,185C447,255 416,303 365,321l0,3C435,348 491,407 491,495C491,548 471,594 438,624C397,661 336,679 243,679C184,679 120,673 76,665M163,604C178,608 207,611 249,611C341,611 404,573 404,486C404,409 345,358 252,358l-89,0z"/>
+<glyph unicode="U" horiz-adv-x="647" d="M75,674l0,-397C75,67 179,-11 317,-11C463,-11 572,73 572,280l0,394l-88,0l0,-400C484,126 419,60 320,60C230,60 163,124 163,274l0,400z"/>
+<glyph unicode="4" horiz-adv-x="513" d="M400,0l0,178l91,0l0,68l-91,0l0,404l-95,0l-290,-415l0,-57l302,0l0,-178M104,246l0,2l159,221C281,499 297,527 317,565l3,0C318,531 317,497 317,463l0,-217z"/>
+<glyph unicode=" " horiz-adv-x="212"/>
+<glyph unicode="0" horiz-adv-x="513" d="M263,661C131,661 36,542 36,323C38,108 125,-11 252,-11C395,-11 478,111 478,332C478,539 399,661 263,661M257,593C349,593 389,488 389,328C389,162 346,57 257,57C177,57 125,153 125,322C125,499 181,593 257,593z"/>
+</font>
+
+	<g id="Livello_2" style="display:none;">
+	
+		<text transform="matrix(1 0 0 1 -33.6934 -1146.4692)" style="display:inline;fill:#222221; font-family:'MyriadPro-Regular'; font-size:60;">PURPLE A400</text>
+	<rect x="-156.849" y="-1033.704" style="display:inline;fill:#3F51B5;" width="579.058" height="1344.134"/>
+</g>
+<g id="Livello_3">
+	<g>
+		<g>
+			<rect x="7.662" y="170.118" style="fill:#FFFFFF;" width="43.667" height="65"/>
+			<rect x="71.329" y="112.216" style="fill:#FFFFFF;" width="43.665" height="122.902"/>
+			<rect x="134.994" y="141.119" style="fill:#FFFFFF;" width="43.67" height="94"/>
+			<rect x="198.664" y="75.119" style="fill:#FFFFFF;" width="43.674" height="160"/>
+		</g>
+		<g>
+			<g>
+				<polyline style="fill:none;stroke:#FFFFFF;stroke-width:11;stroke-linecap:round;stroke-miterlimit:10;" points="
+					19.026,107.527 93.162,37.527 156.829,91.527 204.314,40.813 				"/>
+				<g>
+					<polygon style="fill:#FFFFFF;" points="212.967,55.512 220.436,23.466 188.946,33.02 					"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

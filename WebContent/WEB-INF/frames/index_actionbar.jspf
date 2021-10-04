@@ -1,0 +1,67 @@
+<!-- JSTL -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+<div class="row nomargin" id="actionmenu">
+<!-- Check on function create , delete -->
+		<c:forEach items="${requestScope.userPerms}" var="userPerms">
+			<c:if test = "${ userPerms.asset == 'device'}">
+				<!--  CHECK: IF THE CONNECTED USER can CREATE -->
+				<c:if test = "${fn:contains(userPerms.permissionCRUD, 'C')}">
+					<c:set var = "allowCreate" scope = "session" value = "true"/>
+				</c:if>
+				<!--  CHECK: IF THE CONNECTED USER can DELETE -->
+				<c:if test = "${fn:contains(userPerms.permissionCRUD, 'D')}">
+					<c:set var = "allowDelete" scope = "session" value = "true"/>
+				</c:if>
+				<!--  CHECK: IF THE CONNECTED USER can UPDATE -->
+				<c:if test = "${fn:contains(userPerms.permissionCRUD, 'U')}">
+					<c:set var = "allowUpdate" scope = "session" value = "true"/>
+				</c:if>
+			 </c:if>
+		</c:forEach>
+
+		<!-- Check if createDevice is allowed -->
+		<c:if test = "${allowCreate == true}">
+			<form action="newdevice" id="newdeviceform" class="col l3 m4 s4 left valign-wrapper">
+				<input type="hidden" name="scope" id="scopeformval"/>
+				<input type="hidden" name="urbanservice" id="urbanserviceformval"/>
+				<button class="valign waves-effect waves-light btn "><i18n:message value="new_device"/></button>
+			</form>
+		</c:if>
+
+
+		<!-- OBJECT FROM SESSION BACKEND -->
+		<c:set var = "userId" scope = "session" value = "${requestScope.userId}"/>
+		<script type="text/javascript">
+				var connectedUserId = '${userId}';
+				var isAdmin = '${userIsAdmin}';
+		</script>
+
+	<div class="col l9 m8 s8 right">
+
+	<!-- Check if delete is allowed -->
+	<c:if test = "${allowDelete == true}">
+		<a class="waves-effect waves-light btn-flat disabled right deletetrigger tooltipped multipledeletedevice" data-position="bottom" data-delay="200" data-tooltip='<i18n:message value="delete_selected"/>' >
+			<i class="material-icons">delete</i>
+		</a>
+		<a class="waves-effect waves-light btn-flat right tooltipped" data-position="bottom" data-delay="200" id="selectalltrigger" data-tooltip='<i18n:message value="select_all"/>' >
+			<i class="material-icons">select_all</i>
+		</a>
+	</c:if>
+
+
+		<a class="waves-effect waves-light btn-flat right tooltipped hide" data-position="bottom" data-delay="200" id="visualizebadges" data-tooltip='<i18n:message value="visualize_aslist"/>' >
+			<i class="material-icons">view_module</i>
+		</a>
+		<a class="waves-effect waves-light btn-flat right tooltipped disabled"  data-position="bottom" data-delay="200" id="visualizemap"  data-tooltip='<i18n:message value="visualize_asmap"/>' >
+			<i class="material-icons">map</i>
+		</a>
+		<a class="waves-effect waves-light btn-flat right tooltipped" data-position="bottom" data-delay="200" id="startsim" data-tooltip='<i18n:message value="start_simulation"/>' >
+			<i class="material-icons">play_arrow</i>
+		</a>
+		<a class="waves-effect waves-light btn-flat right tooltipped hide" data-position="bottom" data-delay="200" id="stopsim" data-tooltip='<i18n:message value="stop_simulation"/>' >
+			<i class="material-icons">stop</i>
+		</a>
+	</div>
+</div>

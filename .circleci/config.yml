@@ -1,0 +1,136 @@
+version: 2.1
+
+orbs:
+  maven: cloudesire/maven@0.1.2
+
+defaults: &defaults
+  environment:
+    GIT_ROOT: "/home/circleci"
+    BASE_BUILD_NUM: "0"
+    DOCKER_IMAGE: viewer
+  docker:
+    - image: cimg/openjdk:11.0
+
+jobs:
+  build:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - maven/with_cache:
+          mvn_path: ./mvnw
+          steps:
+            - run: mkdir -p $HOME/.m2 && cp -v $GIT_ROOT/project/.circleci/settings.xml $HOME/.m2
+            - run:
+                name: Install
+                command: ./mvnw -B install -Dmaven.test.skip=true
+
+      - run: $GIT_ROOT/project/.circleci/sonar.sh
+
+      - setup_remote_docker
+
+      - run:
+          name: Build image
+          command: |
+             docker login $REGISTRY_HOSTNAME -u opsi -p $REGISTRY_PASSWORD
+             docker build -t $REGISTRY_HOSTNAME/$DOCKER_IMAGE . -f docker/Dockerfile
+
+      - run:
+          name: Cache docker image
+          command: docker save $REGISTRY_HOSTNAME/$DOCKER_IMAGE > image.tar
+
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - .
+
+  deploy:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+
+      - setup_remote_docker
+
+      - run:
+          name: Import docker image
+          command: docker load < image.tar
+
+      - run:
+          name: Upload Docker Image
+          command: |
+            docker login $REGISTRY_HOSTNAME -u opsi -p $REGISTRY_PASSWORD
+            if [ -n "$CIRCLE_TAG" ]; then
+                docker tag $REGISTRY_HOSTNAME/$DOCKER_IMAGE:latest $REGISTRY_HOSTNAME/$DOCKER_IMAGE:$CIRCLE_TAG
+                docker push $REGISTRY_HOSTNAME/$DOCKER_IMAGE:$CIRCLE_TAG
+                exit 0
+            fi
+            docker push $REGISTRY_HOSTNAME/$DOCKER_IMAGE:latest
+
+workflows:
+  version: 2
+
+  nightly:
+    jobs:
+      - build:
+          context: digitalenabler-core
+    triggers:
+      - schedule:
+          cron: "0 3 * * 2-6"
+          filters:
+            branches:
+              only:
+                - main
+
+  weekly:
+    jobs:
+      - build:
+          context: digitalenabler-core
+      - deploy:
+          context: digitalenabler-core
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
+    triggers:
+      - schedule:
+          cron: "0 3 * * 1"
+          filters:
+            branches:
+              only:
+                - main
+
+  build-and-deploy:
+    jobs:
+      - build:
+          context: digitalenabler-core
+      - deploy:
+          context: digitalenabler-core
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
+
+  build-and-deploy-tag:
+    jobs:
+      - build:
+          context: digitalenabler-core
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - deploy:
+          context: digitalenabler-core
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/

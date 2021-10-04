@@ -1,0 +1,17 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		currentLanguage = '<%=request.getSession().getAttribute("lang")%>';
+		// Get token and refresh token
+		var sessionToken = '<%=session.getAttribute("token")%>';
+
+		var sessionRefreshToken = '<%=session.getAttribute("refresh_token")%>';
+
+		/* Verifies the IDM authentication and authorization */
+		var valid = authenticate(sessionToken, sessionRefreshToken);
+
+		if(valid){
+			onDocReady();
+		}
+
+	});
+</script>

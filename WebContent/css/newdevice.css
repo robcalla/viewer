@@ -1,0 +1,25 @@
+.iotmanager header{
+	height:64px;
+}
+
+.iotmanager .container {
+    min-height: auto;
+    overflow-y: visible;
+    overflow-x: visible;
+    margin-bottom: 60px;
+}
+.iotmanager #noattrs-msg{
+	border-radius: 2px;
+}
+.iotmanager #attrappender .newattr .wifi-icon{
+	position: absolute;
+	left: 10px;
+}
+.iotmanager #map{
+	min-height:400px;
+	background-color:gray;
+}
+.iotmanager #pushonlyalert {
+    font-size: 0.6em;
+    color: #999;
+}

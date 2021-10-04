@@ -1,0 +1,11 @@
+{
+  "realm": "digitalenabler",
+  "auth-server-url": "***",
+  "ssl-required": "external",
+  "resource": "cfe-app",
+  "credentials": {
+    "secret": "***"
+  },
+  "confidential-port": 0,
+  "use-resource-role-mappings": true
+}

@@ -1,0 +1,24 @@
+<!-- Modal Structure -->
+<div id="cockpitselectmodal" class="modal">
+	<form id="cockpitselectnameform" onSubmit="return false;">
+		<div class="modal-content">
+
+			<h4><i18n:message value="select_the_dashboard"/></h4>
+
+
+			<div class="row">
+				<div class="input-field col s12">
+					<select id="cockpitnames" name="cockpitnames" class="documentSelectOption browser-default">
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="modal-footer">
+			<button id="cockpitselectnamebutton" class="modal-close waves-effect waves-blue btn-flat" type="submit" name="action"><i18n:message value="select"/></button>
+			<a href="#!" class=" modal-action modal-close waves-effect waves-blue btn-flat"><i18n:message value="cancel"/></a>
+		</div>
+
+	</form>
+</div>

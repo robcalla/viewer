@@ -1,0 +1,18 @@
+	
+ 	<footer class="page-footer">
+	    <div class="footer-copyright">
+			<div class="poweredBy right-align">
+			</div>
+			<div class="center-align">
+				<a class="" href="https://www.eng.it/" target="_blank" title="Engineering Ingegneria Informatica">
+                   <img src="/imgs/engineering.png" alt="Engineering Ingegneria Informatica">
+                </a>
+			</div>
+			<div class="poweredBy right-align">
+				<div class="powered_text ">Powered by</div>
+		     	<a class="" href="https://www.fiware.org/" target="_blank" title="FIWARE">
+		     		<img src="imgs/fiware-logo.png" alt="FIWARE">
+		     	</a>
+			</div>
+	    </div>
+	</footer>

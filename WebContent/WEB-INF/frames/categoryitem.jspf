@@ -1,0 +1,19 @@
+<!-- JSTL -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+<div class="col s12 m6 l4 catitem template hide">
+	<div class="hoverable z-depth-1 block white nopadding">
+		<a href="#" class="catanchor primary secondary-text"> <span
+			class="labelholder"><i18n:message value="scope" /></span> <span
+			class="catname">{Category name}</span>
+
+			<ul class="previewDev">
+			</ul>
+		</a>
+		<a href="#editcatmodal" class="editcat hide"> <i class="material-icons white-text">edit</i>
+		</a>
+		<a href="#!" class="delcat hide"> <i class="material-icons white-text">delete</i>
+		</a>
+	</div>
+</div>

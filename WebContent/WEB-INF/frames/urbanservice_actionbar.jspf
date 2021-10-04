@@ -1,0 +1,10 @@
+<nav class="containerized row nomargin" id="actionmenu">
+	<div class="col l3 offset-l6 m4 offset-m4 s7 offset-s1">
+		<a class="waves-effect waves-light btn-flat disabled right deletetrigger tooltipped multipledeletedevice" data-position="bottom" data-delay="200" data-tooltip='<i18n:message value="delete_selected"/>' >
+			<i class="material-icons">delete</i>
+		</a>
+		<a class="waves-effect waves-light btn-flat right tooltipped" data-position="bottom" data-delay="200" id="selectalltrigger" data-tooltip='<i18n:message value="select_all"/>' >
+			<i class="material-icons">select_all</i>
+		</a>
+	</div>
+</nav>

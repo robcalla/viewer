@@ -1,0 +1,139 @@
+
+.iotmanager a.collection-item.block{ color: #263238; }
+
+.iotmanager #actionmenu {
+    height: 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: space-around;
+}
+.iotmanager #actionmenu div.col{
+    margin: 0;
+}
+
+.iotmanager .action-fab{
+	position: absolute;
+    top: 7px;
+}
+
+
+.iotmanager .action-fab.active a.btn-floating.btn-large i.material-icons {
+    transform: rotate(45deg);
+    transition: all .5s ease;
+}
+.iotmanager .action-fab a.btn-floating.btn-large i.material-icons {
+    transform: rotate(0deg);
+    transition: all .5s ease;
+}
+
+@media (max-width: 770px) {
+	.iotmanager #actionmenu .btn-flat{
+		padding:0px 7%;
+	}
+}
+
+.iotmanager .selector{ position:absolute; top: 5px; left: 5px; }
+.iotmanager .card.horizontal .card-image img{ height:175px;	}
+/* .iotmanager .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating).modaltrigger { color: #D32F2F; } */
+.iotmanager #devicelist .card-content{ position:relative; }
+.iotmanager #devicelist .deviceitem{ min-height:197px; padding: 0 20px;}
+
+.iotmanager #devicelist .deviceitem .card-stacked {
+    width: 100%;
+    min-width: 180px;
+}
+.iotmanager #devicelist .deviceitem .card-image{
+	width:20%;
+	min-width:90px;
+}
+.iotmanager #devicedetails{
+	min-height:100%;
+	height:100%;
+	max-height:100%;
+	overflow:hidden;
+}
+
+.iotmanager #devicedetails #actiondevice{
+	position:absolute;
+	bottom:0;
+}
+
+.iotmanager #devicedetails .light{
+	width:4%;
+}
+
+@media (max-width: 600px) {
+	.iotmanager #map{
+		height: 90%;
+	}
+	.iotmanager #devicedetails{
+		overflow: auto;
+	}
+}
+@media (min-width: 601px) {
+	.iotmanager #map{
+		height: 100%;
+	}
+}
+
+.iotmanager #devicedetails .modal-content #details{
+	height:100%;
+	padding:25px;
+}
+.iotmanager #devicedetails .attrlist .switch label input[type=checkbox]:checked+.lever:after{
+	background-color: #81C784;
+}
+.iotmanager #mapvisualization{
+	width:100%;
+	height: 100%;
+	background-color: gray;
+	position:relative;
+	right:0;
+	top:0;
+	bottom:0;
+	margin: 20px auto 0;
+}
+/*
+.iotmanager #remove-cockpit-link {
+	position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2;
+    background-color: rgba(25,118,210,0.7) !important;
+}
+
+.iotmanager #change-cockpit-link {
+	position: absolute;
+    bottom: 180px;
+    right: 30px;
+    z-index: 2;
+    background-color: rgba(25,118,210,0.7) !important;
+}
+*/
+.iotmanager #no-cockpit-linked {
+	padding: 300px;
+    color: #37474f;
+}
+
+.iotmanager ul#menuCont {
+	min-width: 230px;
+    min-width: max-content;
+}
+.iotmanager #menuContestuale #menuCont a {
+    width: max-content;
+}
+
+#iframedashboard {
+    height: 100%;
+    margin-top: 10px;
+}
+
+.iotmanager #cockpitNameTitle {
+    font-size: 1.5em;
+    padding: 0px 25px;
+/*     font-weight: 500; */
+}

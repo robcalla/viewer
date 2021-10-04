@@ -1,0 +1,29 @@
+.iotmanager .secondary-content.filteredType{
+	text-transform:uppercase;
+}
+.iotmanager #devicedetails{ min-height:100%;}
+.iotmanager #devicedetails #actiondevice{
+	position:absolute;
+	bottom:0;
+}
+.iotmanager #map{
+		width:40%;
+		height: 100%;
+		background-color: gray;
+		position:absolute;
+		right:0;
+		top:0;
+		bottom:0;
+}
+.iotmanager #devicedetails .modal-content #details{
+	width:60%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	bottom:0;
+	padding:50px;
+}
+.iotmanager #devicedetails .attrlist .switch label input[type=checkbox]:checked+.lever:after{
+	background-color: #81C784;
+}

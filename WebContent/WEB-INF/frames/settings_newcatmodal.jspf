@@ -1,0 +1,57 @@
+<!-- Modal Structure -->
+<div id="newcatmodal" class="modal">
+	<form id="newcatform" action="#!">
+		<div class="modal-content">
+
+			<h4><i18n:message value="new_scope"/></h4>
+			<p><i18n:message value="please_new_scope"/></p>
+
+			<div class="row">
+		        <div class="input-field col s12">
+		          <input required id="categorynamefield" type="text" class="validate" pattern="^[^\s]([a-zA-Z0-9]+(\s[a-zA-Z0-9]+)*)" >
+		          <label for="categorynamefield"><i18n:message value="scope_name"/></label>
+		        </div>
+			</div>
+			<div>
+				<p><i18n:message value="scope_image"/></p>
+				<div class="switch" style="padding: 10 0 20 0;">
+					<label>
+				      <i18n:message value="local"/>
+				      <input type="checkbox" id="scopeimagesourcetypeswitch">
+				      <span class="lever" id="scopeimagesourcetype"></span>
+				      <i18n:message value="remote"/>
+				    </label>
+				</div>
+				<div>
+
+					<div class="file-field input-field col s12" id="localimage">
+				      <div class="cedus-blue btn">
+				        <span>File</span>
+				        <input name="file" type="file" id="local_input" accept=".png, .jpg, .jpeg">
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" id="local_input_file_path"type="text">
+				      </div>
+				    </div>
+
+				    <div class="row hide" id="remoteimage">
+					    <div class="input-field col s12">
+					      <input placeholder="remote url" id="remote_input" type="text" class="validate">
+					    </div>
+					</div>
+					<div id="upload_error">
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="modal-footer xfc">
+			<button type="submit" class="waves-effect btn-flat"><i18n:message value="create"/></button>
+			<button type="button" class="modal-action modal-close waves-effect btn-flat" id="cancle_upload"><i18n:message value="cancel"/></button>
+		</div>
+
+	</form>
+</div>

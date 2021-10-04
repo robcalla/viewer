@@ -1,0 +1,77 @@
+.iotmanager .urbanserviceitem{
+	margin-bottom: 20px;
+}
+.iotmanager .urbanserviceitem a.serviceanchor{
+	display:block;
+	padding:20px 16px;
+	height:100%;
+	font-size:1.5rem;
+	text-transform:capitalize;
+}
+/*
+.iotmanager .urbanserviceitem.tourism .block{ background-color: #EF7C0E; }
+.iotmanager .urbanserviceitem.illumination .block{ background-color: #FFD600; }
+.iotmanager .urbanserviceitem.parking .block{ background-color: #4A8CCB; }
+.iotmanager .urbanserviceitem.water .block{ background-color: #60C4E3; }
+.iotmanager .urbanserviceitem.environment .block{ background-color: #76B72A; }
+.iotmanager .urbanserviceitem.waste .block{ background-color: #788F9B; }
+.iotmanager .urbanserviceitem.mobility .block{ background-color: #A54392; }
+.iotmanager .urbanserviceitem.kpi .block { background-color: #999; }
+<<<<<<< HEAD
+.iotmanager .urbanserviceitem.issues .block { background-color: #ca4a46; }
+=======
+.iotmanager .urbanserviceitem.issues .block { background-color: #ca4a46; }
+>>>>>>> refs/heads/robraccu_cedus_develop
+.iotmanager .urbanserviceitem.control_room .block { background-color: #009688; }
+.iotmanager .urbanserviceitem.industry .block { background-color: #4153A0; }
+*/
+
+.iotmanager .urbanserviceitem .block{
+	width:100%;
+	height:265px;
+	padding: 20px 16px;
+	position:relative;
+    background-color: #ccc;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70px auto;
+}
+
+.iotmanager .urbanserviceitem .block .labelholder{
+/* 	color: #a3b3ba; */
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 300;
+}
+.iotmanager .urbanserviceitem .block .urbanservicename{
+	font-size: 32px;
+    font-weight: 300;
+}
+.iotmanager .urbanserviceitem .delsubcat{
+	position:absolute;
+	bottom:20px;
+	right:16px;
+}
+.iotmanager .urbanserviceitem#newurbanservicetrigger .block{
+	box-shadow: 0px 0px 10px #999 inset;
+}
+.iotmanager .urbanserviceitem#newurbanservicetrigger a{
+	padding:64px 0px;
+}
+.iotmanager select{
+	display: inline;
+	color: #a3b3ba;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+}
+.iotmanager .mapcentervalues{
+	display: inline;
+	color: #a3b3ba;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 600;
+}

@@ -1,0 +1,100 @@
+#headerLayout {
+  padding-bottom: 30px;
+}
+
+
+li.countDev.red {
+    background-color: red;
+}
+
+/* .iotmanager .container { */
+/*     min-height: calc(100% - 90px - 64px - 20px); */
+/*     padding-top: 20px; */
+/* } */
+/* @media (max-width: 600px) { */
+/* 	.iotmanager .container { */
+/* 	    min-height: calc(100% - 90px - 56px - 20px); */
+/* 	    padding-top: 20px; */
+/* 	} */
+/* } */
+
+.iotmanager #catlist {
+/*     margin-top: 68px; */
+}
+.iotmanager .catitem{
+	margin-bottom: 20px;
+}
+
+.iotmanager .catitem a.catanchor{
+	display:block;
+	height:100%;
+	font-size:1.5rem;
+	/* text-transform:capitalize; */
+	display: flex;
+	display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: start;
+    -webkit-align-items: start;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    background-size: cover;
+    background-position: center center;
+}
+.iotmanager .catitem.enabler a.catanchor{
+	background-size: cover;
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+.iotmanager .catitem.enabler#city a.catanchor{
+    background-image: url('/imgs/enabler-city.png');
+}
+.iotmanager .catitem.enabler#facility a.catanchor{
+    background-image: url('/imgs/enabler-facility.png');
+}
+.iotmanager .catitem.enabler#farm a.catanchor{
+    background-image: url('/imgs/enabler-farm.png');
+}
+
+.iotmanager .catitem .block{
+	width:100%;
+	height: 24%;
+	padding: 20px 16px;
+	position:relative;
+}
+.iotmanager .catitem .block .labelholder {
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    width: 100%;
+    background-color: rgba(0,0,0,.3);
+    padding: 10px 20px 0;
+}
+.iotmanager .catitem .block .catname {
+    font-size: 27px;
+    font-weight: 300;
+    background-color: rgba(0,0,0,.3);
+    width: 100%;
+    padding: 10px 20px 10px;
+    color: white;
+    line-height: 26px;
+}
+
+#map-container {
+/* 	height: 300px; */
+}
+#context-map {
+	height: 100%;   /* for browser which don't support calc function*/
+	height: calc(100% + 1px);
+	border: 3px solid #ddd;
+}
+.citizen-container {
+	position: relative;
+	top: 65px;
+	width: 90%;
+}
+.badge-large {
+	height: 40% !important;
+}

@@ -1,0 +1,62 @@
+<!-- Modal Structure -->
+<div id="editcatmodal" class="modal">
+	<form id="editcatform" action="#!">
+		<div class="modal-content">
+
+			<h4><i18n:message value="change_picture"/></h4>
+
+			<div class="row">
+		        <div class="input-field col s12">
+		          <input disabled id="editcategorynamefield" type="text" class="validate" pattern="^[^\s]([a-zA-Z0-9]+(\s[a-zA-Z0-9]+)*)" >
+		        </div>
+			</div>
+
+			<div>
+				<div class="switch" style="padding: 10 0 20 0;display:inline-block;">
+					<label>
+				      <i18n:message value="local"/>
+				      <input type="checkbox" id="scopeimagesourcetypeswitch">
+				      <span class="lever" id="scopeimagesourcetype"></span>
+				      <i18n:message value="remote"/>
+				    </label>
+				</div>
+				<div class="switch" style="padding: 10 0 20 0;display:inline-block;margin-left: 100px;">
+					<label>
+				      <input type="checkbox" id="editscopeimagesourcetypeswitch">
+				      <span class="lever" id="editscopeimagesourcetype"></span>
+				      <span><i18n:message value="change_picture_default"/></span>
+				    </label>
+				</div>
+				<div>
+
+					<div class="file-field input-field col s12" id="localimage">
+				      <div class="cedus-blue btn">
+				        <span>File</span>
+				        <input name="file" type="file" id="edit_local_input" accept=".png, .jpg, .jpeg">
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" id="edit_local_input_file_path"type="text">
+				      </div>
+				    </div>
+
+				    <div class="row hide" id="remoteimage">
+					    <div class="input-field col s12">
+					      <input placeholder="remote url" id="edit_remote_input" type="text" class="validate">
+					    </div>
+					</div>
+					<div id="upload_error">
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="modal-footer xfc">
+			<button type="submit" class="waves-effect btn-flat"><i18n:message value="save"/></button>
+			<button type="button" class="modal-action modal-close waves-effect btn-flat" id="cancle_upload"><i18n:message value="cancel"/></button>
+		</div>
+
+	</form>
+</div>

@@ -1,0 +1,138 @@
+/*  .iotmanager .container { */
+/*  	container -footer -navbar */
+/*     min-height: calc(100% - 64px - 70px - 90px ); */
+/* } */
+/* @media (max-width: 600px) { */
+/* 	.iotmanager .container { */
+/* 	    min-height: calc(100% - 90px - 56px - 68px); */
+/* 	} */
+/* } */
+
+/* Overwrite Materialize style */
+@media only screen and (min-width: 993px){
+	.container {
+	    width: 90%;
+	}
+}
+
+/* Overwrite Materialize style */
+@media only screen and (min-width: 601px){
+	.container {
+	    width: 90%;
+	}
+}
+
+
+ul.previewDev {
+    font-size: 12px;
+    color: black!important;
+    position: absolute;
+    display: inline-flex;
+    right: 20px;
+    bottom: 40px;
+    font-weight: 400;
+}
+li.countDev {
+    background-color: grey;
+    margin: 3px;
+    width: 18px;
+    height: 18px;
+    line-height: 15px;
+    padding: 2px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 1px;
+}
+
+/* Centralizzare il css (colori ripetuti con urbanservices.js) */
+.iotmanager .Tourism { background-color: #EF7C0E; }
+.iotmanager .Illumination { background-color: #FFD600; }
+.iotmanager .Parking { background-color: #4A8CCB; }
+.iotmanager .Water { background-color: #60C4E3; }
+.iotmanager .Environment { background-color: #76B72A; }
+.iotmanager .Waste { background-color: #788F9B; }
+.iotmanager .Mobility { background-color: #A54392; }
+.iotmanager .Kpi  { background-color: #E72264; }
+.iotmanager .Issues  { background-color: #ca4a46; }
+.iotmanager .Control_room { background-color: #009688; }
+.iotmanager .Industry { background-color: #4153A0; }
+
+li.countDev.red {
+    background-color: red;
+}
+
+.iotmanager #catlist{
+/* 	margin-top: 45px; */
+}
+
+.iotmanager .catitem{
+	margin-bottom: 20px;
+}
+.iotmanager .catitem a.catanchor{
+	display:block;
+/* 	padding:20px 16px; */
+	height:100%;
+	font-size:1.5rem;
+/*	text-transform:capitalize; */
+
+	display: flex;
+	display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    align-items: start;
+    -webkit-align-items: start;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.iotmanager .catitem a.catanchor{
+    background: url(../imgs/cat/defaultCity.svg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.iotmanager #newcattrigger.catitem a.catanchor{
+    background-image: none;
+    display: block;
+}
+
+
+.iotmanager .catitem .block{
+	width:100%;
+	height:265px;
+	padding: 20px 16px;
+	position:relative;
+}
+.iotmanager .catitem .block .labelholder,
+.iotmanager .catitem .block .catname {
+	color: white;
+	background-color: rgba(0,0,0,.4);
+	width: 100%;
+}
+.iotmanager .catitem .block .labelholder {
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    padding: 10px 20px 0;
+}
+.iotmanager .catitem .block .catname {
+    font-size: 32px;
+    font-weight: 300;
+    padding: 0px 20px 10px;
+}
+.iotmanager .catitem .delcat{
+	position:absolute;
+	bottom:20px;
+	right:20px;
+}
+.iotmanager .catitem .editcat{
+	position:absolute;
+	bottom:20px;
+	right:44px;
+}
+.iotmanager .catitem#newcattrigger .block{
+	box-shadow: 0px 0px 10px #999 inset;
+}
+.iotmanager .catitem#newcattrigger a{
+	padding:64px 0px;
+}

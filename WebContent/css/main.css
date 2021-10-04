@@ -1,0 +1,380 @@
+/*General layout*/
+
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+#containerLayout {
+  min-height:100%;
+  position:relative;
+}
+#headerLayout {
+  padding-bottom: 0px;
+}
+#bodyLayout {
+  padding-bottom: 90px;	/* Height of the footer */
+}
+#footerLayout {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:90px;
+}
+
+footer{
+    justify-content: center;
+    height: 100%;
+}
+
+.iotmanager html, body, head {
+	color: #263238 !important;
+	/* 	display:flex; */
+	/* 	flex-direction:column; */
+}
+
+
+
+.iotmanager .h-40 {
+	height: 40px;
+}
+
+.iotmanager #pageloader {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1000;
+}
+
+.iotmanager nav ul a {
+	color: #000;
+}
+
+.iotmanager #pageloader i {
+	margin: 0 auto;
+}
+
+
+.iotmanager #main-logo {
+	width: auto;
+	height: 64px;
+}
+
+
+@media ( max-width : 600px) {
+	.iotmanager #main-logo {
+		width: auto;
+		height: 55px;
+	}
+}
+
+.iotmanager [type="radio"]:checked+label:after, .iotmanager [type="radio"].with-gap:checked+label:after
+	{
+	background-color: #FFC107;
+	z-index: 0;
+}
+
+.iotmanager [type="radio"]:checked+label:after, .iotmanager [type="radio"].with-gap:checked+label:before,
+	.iotmanager [type="radio"].with-gap:checked+label:after {
+	border: 2px solid #FFC107;
+}
+
+@media only screen and (min-width: 1366px) {
+	.iotmanager .containerized {
+		padding: 0 16px;
+		width: 100%;
+	}
+}
+
+.iotmanager .fullsizecol {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.iotmanager .nomargin {
+	margin: 0px !important;
+}
+
+.iotmanager .topmargin {
+	margin-top: 20px 0 0 0 !important;
+}
+
+.iotmanager .bottommargin {
+	margin: 0 0 20px 0 !important;
+}
+
+.iotmanager .nopadding {
+	padding: 0px !important;
+}
+
+.iotmanager .container-iot {
+	min-width: 320px;
+	padding: 20px 20px;
+	/*     flex-grow:1; */
+	position: relative;
+}
+
+@media only screen and (max-width: 993px) {
+	.iotmanager .container, .iotmanager .container-iot {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 601px) {
+	.iotmanager .container, .iotmanager .container-iot {
+		width: 95%;
+	}
+}
+
+.iotmanager .materialize .breadcrumb:before, .breadcrumb {
+	color: #37474F !important;
+	vertical-align: middle;
+}
+
+.iotmanager #side-main-logo {
+	width: 90%;
+}
+
+.iotmanager .block {
+	display: block;
+}
+
+.iotmanager .inline {
+	display: inline;
+}
+
+.iotmanager .inlineblock {
+	display: inline-block;
+}
+
+.iotmanager #searchform {
+	/*
+	    display: inline-block;
+	    margin: 0 auto;
+	    position: absolute;
+	    left: -1px;
+	    right: -1px;
+    */
+
+}
+
+.iotmanager .hide-on-med-and-down #searchform {
+	/* 	width: 50%; */
+	/* 	top: 9px; */
+	min-width: 280px;
+}
+
+.iotmanager .searchBar {
+	width: calc(100% - 450px);
+	margin: 0 auto;
+}
+
+.iotmanager #searchform input#search {
+	background-color: #efefef;
+}
+
+.iotmanager #searchform .fullsizecol .input-field {
+	height: 45px;
+}
+
+.iotmanager #search:focus {
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0
+		rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.iotmanager #searchform>div.input-field {
+	width: 100%;
+	border-radius: 2px 2px 2px 2px;
+	height: 45px;
+}
+/* .iotmanager nav{ border-bottom: 1px solid #BDBDBD; } */
+.iotmanager nav .nav-wrapper #searchform i {
+	height: 45px;
+	line-height: 45px;
+}
+
+.iotmanager nav .languageAnchor {
+	width: 100%;
+	height: 100%;
+}
+
+.iotmanager #mobilesearch {
+	display: none;
+	height: 45px;
+}
+
+.iotmanager .activeLang {
+	text-transform: uppercase;
+}
+
+.iotmanager nav ul.languagemenu a:hover {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.iotmanager .breadcrumb_bar {
+	height: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+	.iotmanager .breadcrumb_bar a.breadcrumb {
+		display: none;
+	}
+	.iotmanager .breadcrumb_bar:last-child::before {
+		content: "...";
+	}
+	.iotmanager .breadcrumb_bar a.breadcrumb:last-of-type {
+		display: inline-block;
+	}
+}
+
+.iotmanager .text-italic {
+	font-style: italic;
+}
+
+.iotmanager .collection .collection-item.avatar {
+	min-height: 64px;
+}
+
+.iotmanager .collection .vertical-align-wrapper {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+}
+
+.iotmanager #dropdownTools, .iotmanager #dropdownToolsMob {
+	z-index: 1001;
+	width: auto !important;
+}
+
+.iotmanager #dropdownTools li, .iotmanager #dropdownToolsMob li {
+	white-space: nowrap;
+}
+
+.iotmanager #dropdownTools li a, .iotmanager #dropdownToolsMob li a {
+	display: inline-flex;
+	align-items: center;
+	width: 100%;
+	max-width: 370px;
+	overflow-x: hidden;
+}
+
+.iotmanager #dropdownToolsMob li a {
+	max-width: 350px;
+}
+
+.iotmanager #dropdownTools li a img {
+	height: 40px;
+	margin-right: 10px;
+}
+
+.iotmanager #dropdownToolsMob li a img {
+	height: 28px !important;
+	margin-right: 5px;
+}
+
+.iotmanager .action-fab {
+	position: absolute;
+}
+
+/* .container { */
+/* 	/* container -footer -breadcrubms -navbar */ */
+/* 	min-height: calc(100% - 90px - 70px - 64px); */
+/* } */
+
+/* @media ( max-width : 600px) { */
+/* 	.iotmanager .container { */
+/* 		min-height: calc(100% - 90px - 56px - 68px); */
+/* 	} */
+/* } */
+
+#devicedetails #details {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+}
+
+#devicedetails #details .floatContent {
+	width: 100%;
+	height: 100%;
+	padding: 25px;
+	background: #fff;
+}
+
+#devicedetails.modal .side-nav a {
+	display: inline;
+	font-size: 14px;
+	font-weight: 500;
+	height: auto;
+	line-height: 25px;
+	padding: 0;
+}
+
+#devicedetails.modal .dropdown-content li>a, #devicedetails.modal .dropdown-content li>span
+	{
+	font-size: 16px;
+	display: block;
+	line-height: 22px;
+	padding: 14px 16px;
+}
+
+#devicedetails.modal .side-nav li>a>i, #devicedetails.modal .side-nav li>a>[class^="mdi-"],
+	#devicedetails.modal .side-nav li>a>[class*="mdi-"], #devicedetails.modal .side-nav li>a>i.material-icons
+	{
+	float: left;
+	height: 48px;
+	line-height: 25px;
+	margin: 0 32px 0 0;
+	width: 24px;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+#devicedetails.modal .side-nav {
+	z-index: 99999;
+}
+
+#devicedetails.modal #sidenav-overlay {
+	z-index: 99997;
+}
+
+footer {
+	font-size: 13px;
+	line-height: 25px;
+	color: #919191;
+}
+
+footer.page-footer .footer-copyright {
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+footer .poweredBy {
+	margin: 0px 20px;
+}
+
+footer .poweredBy img {
+	max-height: 25px;
+}
+
+footer, #push {
+	height: 90px;
+}
+footer .footer-copyright div {
+    min-width: 10%;
+}
+
+footer .footer-copyright div {
+	min-width: 10%;
+}

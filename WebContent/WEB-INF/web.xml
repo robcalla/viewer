@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+
+  <module-name>home</module-name>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>logout</web-resource-name>
+            <url-pattern>/logout</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+  	<security-constraint>
+        <web-resource-collection>
+            <web-resource-name>home</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+         <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>KEYCLOAK</auth-method>
+        <realm-name>${keycloak.realm}</realm-name>
+    </login-config>
+
+    <security-role>
+        <role-name>user</role-name>
+    </security-role>
+
+  <servlet>
+    <servlet-name>ImagesHandler</servlet-name>
+    <servlet-class>it.eng.iot.servlet.ImagesHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImagesHandler</servlet-name>
+    <url-pattern>/context_images/*</url-pattern>
+  </servlet-mapping>
+  <display-name>cfe</display-name>
+  <welcome-file-list>
+    <welcome-file>home</welcome-file>
+  </welcome-file-list>
+
+</web-app>
