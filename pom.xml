@@ -8,6 +8,7 @@
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
+		<finalName>ROOT</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -120,13 +121,13 @@
 			<artifactId>amqp-client</artifactId>
 			<version>5.5.1</version>
 		</dependency>
-		
+
 		<dependency>
 		    <groupId>commons-httpclient</groupId>
 		    <artifactId>commons-httpclient</artifactId>
 		    <version>3.1</version>
 		</dependency>
-		
+
 		<!-- Build by JitPack -->
 		<dependency>
 	        <groupId>org.bitbucket.eng_opsi</groupId>
@@ -161,8 +162,8 @@
 		    <artifactId>keycloak-model-jpa</artifactId>
 		    <version>10.0.2</version>
 		    <scope>provided</scope>
-		</dependency>		
-						
+		</dependency>
+
 	</dependencies>
 	<groupId>com.cityenabler</groupId>
 </project>
