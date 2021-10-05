@@ -6,10 +6,8 @@ import it.eng.digitalenabler.restclient.DefaultRestClient;
 import it.eng.digitalenabler.sdk.databinder.DefaultDataBinder;
 import it.eng.digitalenabler.sdk.databinder.model.DataBinder;
 import it.eng.iot.configuration.Conf;
-import it.eng.iot.configuration.ConfGrayLogger;
 import it.eng.iot.configuration.ConfIDM;
 import it.eng.iot.utils.IdentityManagerUtility;
-import it.eng.rspa.log.logger.GraylogLogger;
 
 import java.io.File;
 
@@ -22,8 +20,6 @@ public class CFEServletListener implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		Boolean gLogOn = Boolean.parseBoolean(ConfGrayLogger.getInstance().getString("GraylogClient.enabled"));
-		if(gLogOn) GraylogLogger.stopLogger();
 	}
 
 	@Override

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cfe</artifactId>
-	<version>1.16.2</version>
+	<version>1.16.3</version>
 	<packaging>war</packaging>
 
 	<build>
@@ -37,11 +37,6 @@
 		<repository>
 			<id>JitPack</id>
 			<url>https://jitpack.io</url>
-		</repository>
-		<repository>
-			<id>eng-esl-nexus</id>
-			<name>eng-esl-nexus</name>
-			<url>https://production.eng.it/nexus/content/repositories/releases</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -118,12 +113,6 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>it.eng.rspa.log</groupId>
-			<artifactId>logger</artifactId>
-			<version>1.19.12</version>
 		</dependency>
 
 		<dependency>

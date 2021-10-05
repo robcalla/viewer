@@ -37,14 +37,10 @@ import it.eng.digitalenabler.identity.manager.model.Role;
 import it.eng.digitalenabler.keycloak.KeycloakContext;
 import it.eng.digitalenabler.keycloak.User;
 import it.eng.iot.configuration.Conf;
-import it.eng.iot.configuration.ConfGrayLogger;
 import it.eng.iot.configuration.ConfIDM;
 import it.eng.iot.configuration.ConfOrionCB;
 import it.eng.iot.configuration.ConfRabbitMQ;
-import it.eng.iot.configuration.ToolsConf;
 import it.eng.iot.servlet.model.MapCenter;
-import it.eng.rspa.log.logger.GraylogLogger;
-import it.eng.rspa.log.logger.model.Tool;
 import it.eng.tools.LogFilter;
 import it.eng.tools.Orion;
 import it.eng.tools.model.ActionEntityBean;
@@ -64,14 +60,6 @@ import it.eng.tools.model.ScopeEntityBean;
 public abstract class ServiceConfigManager {
 
 	private static final Logger LOGGER = Logger.getLogger(ServiceConfigManager.class.getName());
-	private static final Boolean gLogOn = Boolean
-			.parseBoolean(ConfGrayLogger.getInstance().getString("GraylogClient.enabled"));
-	private static final GraylogLogger gLogger = (gLogOn)
-			? new GraylogLogger(ConfGrayLogger.getInstance().getString("GraylogClient.protocol"),
-					ConfGrayLogger.getInstance().getString("GraylogClient.host"),
-					Integer.parseInt(ConfGrayLogger.getInstance().getString("GraylogClient.port")),
-					ConfGrayLogger.getInstance().getString("GraylogClient.path"))
-			: null;
 	private static Orion orion;
 	private static String tenantUrl = Conf.getInstance().getString("tenant.url");
 	private static Boolean isTenantActive = Boolean.valueOf(Conf.getInstance().getString("tenant.enabled"));
@@ -273,15 +261,6 @@ public abstract class ServiceConfigManager {
 
 		if(!isTenantActive) {
 			result = orion.postEntity(headerService, headerServicePath, entity);
-
-			if (gLogOn && result) {
-				try {
-					gLogger.urbanserviceCreated("New urbanservice created", ToolsConf.getInstance().getString("cedusdevice.host"), Tool.CFE, category,
-							context);
-				} catch (Exception e) {
-					LOGGER.log(Level.WARNING, "GrayLogger has returned an error: " + e);
-				}
-			}
 		}
 
 		return result;
@@ -794,14 +773,6 @@ public abstract class ServiceConfigManager {
 
 			result = orion.postEntity(headerService, headerServicePath, entity);
 
-			if (gLogOn && result) {
-				try {
-					gLogger.scopeCreated("New scope created", ToolsConf.getInstance().getString("cedusdevice.host"), Tool.CFE, scopeName);
-				} catch (Exception e) {
-					LOGGER.log(Level.WARNING, "GrayLogger has returned an error: " + e);
-				}
-			}
-
 		} else {
 			//UUID uuid = UUID.randomUUID();
 			//String idValue = uuid.toString();
@@ -944,14 +915,6 @@ public abstract class ServiceConfigManager {
 		if(!isTenantActive) {
 			try {
 				returnResult = orion.deleteEntity(headerService, headerServicePath, context);
-
-				if(gLogOn && returnResult) {
-					try {
-						gLogger.scopeDeleted("Scope deleted", ToolsConf.getInstance().getString("cedusdevice.host"), Tool.CFE, context);
-					} catch(Exception e) {
-						LOGGER.log(Level.WARNING, "GrayLogger has returned an error: "+e);
-					}
-				}
 			} catch (Exception e) {
 				returnResult = false;
 				e.printStackTrace();

@@ -27,11 +27,8 @@ import it.eng.digitalenabler.fe.permission.Resource;
 import it.eng.digitalenabler.fe.permission.ResourcePermission;
 import it.eng.digitalenabler.keycloak.User;
 import it.eng.iot.configuration.Conf;
-import it.eng.iot.configuration.ConfGrayLogger;
 import it.eng.iot.utils.CommonUtils;
 import it.eng.iot.utils.ServiceConfigManager;
-import it.eng.rspa.log.logger.GraylogLogger;
-import it.eng.rspa.log.logger.model.Tool;
 import it.eng.tools.model.DashboardBean;
 import it.eng.tools.model.ScopeEntityBean;
 import it.eng.tools.model.ScopeEntityBeanOverall;
@@ -44,15 +41,7 @@ public class AjaxHandler extends HttpServlet {
 	private static final long serialVersionUID = -8956961196989629222L;
 
 	private static final Logger LOGGER = Logger.getLogger(AjaxHandler.class.getName());
-	private static final Boolean gLogOn = Boolean
-			.parseBoolean(ConfGrayLogger.getInstance().getString("GraylogClient.enabled"));
 	private static final String defaultEnabler = Conf.getInstance().getString("MultiEnabler.default");
-	private static final GraylogLogger gLogger = (gLogOn)
-			? new GraylogLogger(ConfGrayLogger.getInstance().getString("GraylogClient.protocol"),
-					ConfGrayLogger.getInstance().getString("GraylogClient.host"),
-					Integer.parseInt(ConfGrayLogger.getInstance().getString("GraylogClient.port")),
-					ConfGrayLogger.getInstance().getString("GraylogClient.path"))
-			: null;
 	private static final String destinationScope = Conf.getInstance().getString("ImageUpload.destinationScope");
 	private static final String filePath = Conf.getInstance().getString("ImageUpload.path");
 	private static Boolean isTenantActive = Boolean.valueOf(Conf.getInstance().getString("tenant.enabled"));
@@ -465,13 +454,6 @@ public class AjaxHandler extends HttpServlet {
 
 					}
 					
-					if(gLogOn && serviceResponse) {
-						try {
-							gLogger.urbanserviceDeleted("Urbanservice deleted", request.getServerName(), Tool.CFE, category, context);
-						} catch(Exception e) {
-							LOGGER.log(Level.WARNING, "GrayLogger has returned an error: "+e);
-						}	
-					}
 					jResp.put("orion_update", serviceResponse);
 					response.getWriter().write(jResp.toString());
 					break;
