@@ -8,7 +8,7 @@ public class FrontendConf extends ConfHelper {
 
 	private static ConfHelper inner;
 
-	private static final String BUNDLE_NAME = "it.eng.iot.configuration.frontend_configuration"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "frontend_configuration"; //$NON-NLS-1$
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);
 

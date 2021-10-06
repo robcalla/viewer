@@ -22,20 +22,20 @@ import it.eng.iot.configuration.FrontendConf;
 public class PropertyManager {
 
 	private static ArrayList<String> confFiles = new ArrayList<String>(
-			Arrays.asList("/it/eng/iot/configuration/frontend_configuration.properties"
+			Arrays.asList("frontend_configuration.properties"
 			)
 	);
-	
+
 	private static ArrayList<ConfHelper> confObj = new ArrayList<ConfHelper>();
-	
-	
+
+
 	private static Properties properties = null;
 	private static Set<Object> propsName = new HashSet<Object>();
 	private static Map<String,String> props= new HashMap<String,String>();
-	
-	static {	
+
+	static {
 		confObj.add(FrontendConf.getInstance());
-		
+
 		properties = new Properties();
 		try {
 			for(int i=0;i<confFiles.size();i++) {
@@ -44,16 +44,16 @@ public class PropertyManager {
 				String fileName = confFiles.get(i);
 				properties.load(PropertyManager.class.getClassLoader().getResourceAsStream(fileName));
 				propsName.addAll(properties.keySet());
-				
+
 				for(Object s : propsName) {
 					String pName = String.valueOf(s);
 					String pValue = null;
-					pValue = confObj.get(i).getString(pName);	
+					pValue = confObj.get(i).getString(pName);
 					props.put(pName, pValue);
 				}
-				
+
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +62,7 @@ public class PropertyManager {
 	public static String getProperty(String propName) {
 		return props.get(propName);
 	}
-	
+
 	public static Map<String,String> getProperties(){
 		return props;
 	}
