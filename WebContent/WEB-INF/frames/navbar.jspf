@@ -1,0 +1,230 @@
+<!-- *** MENU TOOLS *** -->
+<%@page import="it.eng.iot.configuration.ToolsConf"%>
+<%@page import="it.eng.iot.configuration.Conf"%>
+<%@page import="it.eng.iot.configuration.ConfIDM"%>
+<%@ page language="java" import="java.util.*" %> 
+<%@ page import = "java.util.ResourceBundle" %>
+
+
+<!-- DE Tools file configuration from EnablerShowcase -->
+<script src="<%= ToolsConf.getInstance().getString("configurationTools")%>?<%=GregorianCalendar.getInstance().getTimeInMillis()%>"></script>
+
+  <!-- Modal Privacy Structure -->
+  <div id="modalPolicy" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Digital Enabler - <i18n:message value="enabler.policy"/></h4>
+      	<p>
+			<%@ include file="../frames/privacy.jspf"%>
+		</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+  </div>
+
+
+<nav class="white containerized" id="navb">
+	
+	<!-- Desktop navbar -->
+	<div class="nav-wrapper hide-on-med-and-down">
+		
+		<!-- Logo -->
+		<a href="home" class="brand-logo">
+			<img src="/imgs/logo.svg" id="main-logo"/>
+		</a>
+	
+		<!-- User menu -->
+		<ul class="right hide-on-med-and-down">
+		<!-- Tools Menu -->
+			<li><a class="dropdown-button" href="#!" data-activates="dropdownTools" data-alignment="right"><i class="material-icons ">apps</i></a></li>
+			<li class="hide-on-med-and-down">
+				<a class="modal-trigger" href="#modalPolicy">
+					<i class="material-icons hide-on-large-only">lock</i><span class="hide-on-med-and-down"><i18n:message value="enabler.policy"/></span>
+				</a>
+			</li>
+			<li>
+				<a class="languageAnchor dropdown-button dropdown-button-small" data-constrainwidth="false" href="#!" data-activates="languagemenu_big">
+					<span class="activeLang ">${lang}</span>
+					<i class="material-icons left ">language</i>
+				</a>
+			</li>
+			<li>
+				<a class="username dropdown-button dropdown-button-big " href="#!" data-activates="userdropdown_big">
+					<i class="material-icons left ">perm_identity</i>
+					<span class="val">${username}</span>
+					<i class="material-icons right ">arrow_drop_down</i>
+				</a>
+			</li>
+		</ul>
+		
+		<!-- Dropdown Tools desktop-->
+		<ul id="dropdownTools" class="dropdown-content">
+
+		</ul>
+			
+		<!-- User account dropdown menu -->
+		<ul id="userdropdown_big" class="dropdown-content ">
+			<li><a id="cdvProfile" class="profileanchor" href="<%=ConfIDM.getInstance().getString("keycloak.account")%>"><i18n:message value="profile"/></a></li>
+			<li class="divider"></li>
+			<li><a class="" href="logout" id="logout"><i18n:message value="logout"/></a></li>
+	    </ul>
+	    
+		<!-- Language dropdown menu -->
+		<ul id="languagemenu_big" class="languagemenu dropdown-content ">
+			<!-- <li>
+				<a class=""  href="?lang=it">
+					<i id="it" class="inline material-icons hide">done</i>
+					<i18n:message value="italian"/>
+				</a>
+			</li>
+			<li class="divider"></li> -->
+			<li>
+				<a class="" href="?lang=en">
+					<i id="en" class="inline material-icons hide">done</i>
+					<i18n:message value="english"/>
+				</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a class="" href="?lang=es">
+					<i id="es" class="inline material-icons hide">done</i>
+					<i18n:message value="spanish"/>
+				</a>
+			</li>
+			<!-- <li class="divider"></li>
+			<li>
+				<a class="" href="?lang=fr">
+					<i id="fr" class="inline material-icons hide">done</i>
+					<i18n:message value="french"/>
+				</a>
+			</li> -->
+	    </ul>
+		
+	</div>
+	
+	<!-- Mobile navbar -->
+	<div class="nav-wrapper hide-on-large-only">
+		
+		<!-- Menu mobile -->
+		<a href="#" data-activates="mobilesidenav" class="button-collapse center-align black-text">
+			<i class=" material-icons">menu</i>
+		</a>
+		
+		<!-- Logo -->
+		<a href="index" class="brand-logo center">
+			<img src="imgs/logo.svg" id="main-logo"/>
+		</a>
+		
+		<!-- Dropdown Structure -->
+		<ul class="right ">
+			<!-- <li>
+				Search button
+				<a href="#!" class="button" id="mobilesearch_trigger">
+					<i class="material-icons ">search</i>
+				</a>
+			</li> -->
+		<!-- Tools menu mobile -->
+			<li><a class="dropdown-button" href="#!" data-activates="dropdownToolsMob" data-alignment="right"><i class="material-icons ">apps</i></a></li>
+		</ul>
+		
+		<!-- Dropdown Tools mobile [se esiste!]--> 
+		<ul id="dropdownToolsMob" class="dropdown-content">
+			<!-- vuoto -->
+		</ul>
+	    
+
+		<!-- Sidenav for small screen -->
+		<ul class="side-nav " id="mobilesidenav">
+			<li><img src="imgs/logo_mobile.png" id="side-main-logo" /></li>
+			<li class="divider"></li>
+			
+			<li class="no-padding">
+		        <ul class="collapsible collapsible-accordion">
+					<li>
+						<a class="collapsible-header username" href="#!"><i class="material-icons left ">perm_identity</i><span class="val">${username}</span></a>
+						<div class="collapsible-body">
+							<ul>
+								<li><a class="profileanchor" href="<%=ConfIDM.getInstance().getString("keycloak.account")%>"><i18n:message value="profile"/></a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="no-padding">
+		        <ul class="collapsible collapsible-accordion">
+		          <li>
+						<a class="collapsible-header" >
+							<span class="activeLang ">${lang}</span>
+							<i class="material-icons ">language</i>
+						</a>
+						<div class="collapsible-body">
+							<!-- Language dropdown menu -->
+							<ul >
+								<li>
+									<a class=""  href="?lang=it">
+										<i id="it" class="inline material-icons hide">done</i>
+										<i18n:message value="italian"/>
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a class="" href="?lang=en">
+										<i id="en" class="inline material-icons hide">done</i>
+										<i18n:message value="english"/>
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a class="" href="?lang=es">
+										<i id="es" class="inline material-icons hide">done</i>
+										<i18n:message value="spanish"/>
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a class="" href="?lang=fr">
+										<i id="fr" class="inline material-icons hide">done</i>
+										<i18n:message value="french"/>
+									</a>
+								</li>
+						    </ul>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="">
+				<a class="modal-trigger" href="#modalPolicy">
+					<i class="material-icons hide-on-large-only">lock</i><span class=""><i18n:message value="enabler.policy"/></span>
+				</a>
+			</li>
+			<li><a class="" href="logout" id="logout"><i18n:message value="logout"/></a></li>
+		</ul>
+	</div>
+</nav>
+
+<!-- search bar for mobile -->
+<nav class="white z-depth-2 hide-on-large-only" id="mobilesearch">
+	<div class="nav-wrapper">
+		<div >
+			<form id="searchform" class="valign-wrapper" action="filters" method="post">
+				<div class="valign input-field">
+					<input name="searchKeyword" autocomplete="off" class="" id="search" type="search" required placeholder='<i18n:message value="search_service_device"/>' >
+					<label class="label-icon " for="search"><i class=" material-icons">search</i></label>
+					<i class="hide material-icons  closeicon">close</i>
+				</div>
+			</form>
+		</div>
+	</div>
+</nav>
+
+
+
+<script>
+$(document).ready(function(){
+	
+	$('.collapsible').collapsible();
+	$(".button-collapse").sideNav();
+	$('#modalPolicy').modal();
+});
+</script>
