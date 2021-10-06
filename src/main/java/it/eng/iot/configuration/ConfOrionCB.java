@@ -4,22 +4,22 @@ import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ConfGrayLogger extends ConfHelper {
-	
+public class ConfOrionCB extends ConfHelper {
+
 	private static ConfHelper inner;
-	
-	private static final String BUNDLE_NAME = "it.eng.iot.configuration.configuration_graylogger"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "configuration_orion"; //$NON-NLS-1$
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);
 
-	private ConfGrayLogger() {}
-	
+	private ConfOrionCB() {}
+
+
 	public static ConfHelper getInstance() {
 		if(inner == null) {
 			synchronized (ConfHelper.class) {
 				if(inner == null) {
-					inner = new ConfGrayLogger();
+					inner = new ConfOrionCB();
 				}
 			}
 		}

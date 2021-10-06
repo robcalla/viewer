@@ -4,21 +4,22 @@ import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ConfRabbitMQ extends ConfHelper {
-	
+public class ConfGrayLogger extends ConfHelper {
+
 	private static ConfHelper inner;
-	
-	private static final String BUNDLE_NAME = "it.eng.iot.configuration.configuration_rabbitmq";
+
+	private static final String BUNDLE_NAME = "configuration_graylogger"; //$NON-NLS-1$
+
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);
-	
-	private ConfRabbitMQ() {}
-	
+
+	private ConfGrayLogger() {}
+
 	public static ConfHelper getInstance() {
 		if(inner == null) {
 			synchronized (ConfHelper.class) {
 				if(inner == null) {
-					inner = new ConfRabbitMQ();
+					inner = new ConfGrayLogger();
 				}
 			}
 		}
@@ -34,5 +35,4 @@ public class ConfRabbitMQ extends ConfHelper {
 			return '!' + key + '!';
 		}
 	}
-
 }

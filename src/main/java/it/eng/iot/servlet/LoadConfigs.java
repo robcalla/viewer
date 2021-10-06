@@ -45,11 +45,11 @@ public class LoadConfigs extends HttpServlet {
             json.put("message", "Exception");
             out.write(json.toString());
         }
-        
+
         json=new JSONObject(prop);
-        
+
         out.write(json.toString());
-        
+
     }
 
     /**

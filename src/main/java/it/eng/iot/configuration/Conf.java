@@ -5,15 +5,15 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Conf extends ConfHelper {
-	
+
 	private static ConfHelper inner;
-	
-	private static final String BUNDLE_NAME = "it.eng.iot.configuration.configuration"; //$NON-NLS-1$
+
+	private static final String BUNDLE_NAME = "configuration"; //$NON-NLS-1$
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);
 
 	private Conf() {}
-	
+
 	public static ConfHelper getInstance() {
 		if(inner == null) {
 			synchronized (ConfHelper.class) {
