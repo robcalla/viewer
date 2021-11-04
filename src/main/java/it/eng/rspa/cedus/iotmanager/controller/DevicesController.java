@@ -33,7 +33,7 @@ public class DevicesController extends HttpServlet {
 
 		try {
 			CommonController.doGet(request, response);
-		} catch (Exception e) {			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -48,23 +48,24 @@ public class DevicesController extends HttpServlet {
 		} else if (selectedUrbanservice == null || selectedUrbanservice.trim().isEmpty()) {
 			response.sendRedirect("urbanservices");
 		} else {
-	
+
 			if (!isAdmin) {
 				Resource refersTo = new Resource(ResourceEnum.CONTEXT, selectedScope);
 				ResourcePermission dashboardPerms = IdentityManagerUtility
 						.getAssetPermission((User) session.getAttribute("userInfo"), ResourceEnum.CATEGORY, refersTo);
-				
+
 				if (dashboardPerms.getCanRead()) {
-					//TODO Change into CATEGORY(selectedUrbanservice) and apply the corresponding logic
+					// TODO Change into CATEGORY(selectedUrbanservice) and apply the corresponding
+					// logic
 					refersTo = new Resource(ResourceEnum.CONTEXT, selectedScope);
 					dashboardPerms = IdentityManagerUtility.getAssetPermission((User) session.getAttribute("userInfo"),
 							ResourceEnum.DASHBOARD, refersTo);
 				}
-				 
+
 				request.setAttribute("dashboardPerms", dashboardPerms);
-	
+
 			}
-	
+
 			String nextJSP = "/WEB-INF/view/devices.jsp";
 			nextJSP = nextJSP + "?scope=" + selectedScope + "&urbanservice=" + selectedUrbanservice;
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);

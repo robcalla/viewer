@@ -113,9 +113,7 @@
 		<div id="footerLayout">	
 			<%@include file="../frames/footer.jspf"%>
 		</div>
-		
-		<iframe id="knowage-loader" class="hide" src=""></iframe>
-		
+				
 		<!-- 	MODALI -->
 		<%@include file="../frames/settings_newcatmodal.jspf"%>
 		<%@include file="../frames/settings_editcatmodal.jspf"%>

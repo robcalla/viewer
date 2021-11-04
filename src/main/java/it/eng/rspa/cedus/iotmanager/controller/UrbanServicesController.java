@@ -24,54 +24,57 @@ import java.util.logging.*;
 @WebServlet("/urbanservices")
 public class UrbanServicesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger LOGGER = Logger.getLogger(UrbanServicesController.class.getName() );
-       
-    public UrbanServicesController() {
-        super();
-    }
+	private static final Logger LOGGER = Logger.getLogger(UrbanServicesController.class.getName());
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try{ CommonController.doGet(request, response); }
-		catch(Exception e){		
+	public UrbanServicesController() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		try {
+			CommonController.doGet(request, response);
+		} catch (Exception e) {
 			String scheme = request.getScheme() + "://";
-		    String serverName = request.getServerName();
-		    String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
-		    String contextPath = request.getContextPath();
-						
+			String serverName = request.getServerName();
+			String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
+			String contextPath = request.getContextPath();
+
 			String redirectTo = scheme + serverName + serverPort + contextPath;
-			
-			LOGGER.log(Level.INFO, "Redirect to "+redirectTo);
-			
+
+			LOGGER.log(Level.INFO, "Redirect to " + redirectTo);
+
 			response.sendRedirect(redirectTo);
 			return;
 		}
-		
-		String nextJSP = "home";		
+
+		String nextJSP = "home";
 		String selectedScope = request.getParameter("scope");
-		if( selectedScope == null || selectedScope.trim().isEmpty()){
+		if (selectedScope == null || selectedScope.trim().isEmpty()) {
 			response.sendRedirect(nextJSP);
 			return;
 		}
 
 		HttpSession session = request.getSession(false);
-		Boolean isAdmin = (boolean)session.getAttribute("userIsAdmin");
+		Boolean isAdmin = (boolean) session.getAttribute("userIsAdmin");
 		User userInfo = (User) session.getAttribute("userInfo");
-		
-		//TODO Check if the user has access to this area
-		
-		if(!isAdmin) {
+
+		// TODO Check if the user has access to this area
+
+		if (!isAdmin) {
 			Resource refersTo = new Resource(ResourceEnum.CONTEXT, selectedScope);
-			ResourcePermission categoryPerms = IdentityManagerUtility.getAssetPermission(userInfo, ResourceEnum.CATEGORY, refersTo);
+			ResourcePermission categoryPerms = IdentityManagerUtility.getAssetPermission(userInfo,
+					ResourceEnum.CATEGORY, refersTo);
 			request.setAttribute("categoryPerms", categoryPerms);
 		}
-		
+
 		nextJSP = "/WEB-INF/view/urbanservices.jsp";
-		nextJSP = nextJSP + "?scope="+selectedScope;
-		
+		nextJSP = nextJSP + "?scope=" + selectedScope;
+
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		dispatcher.forward(request,response);
-		
+		dispatcher.forward(request, response);
+
 	}
 
 }

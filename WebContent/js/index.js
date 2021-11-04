@@ -3,13 +3,7 @@ var filtered = [];
 var elements = {};
 $(document).ready(function(){
 	
-	var knowageUrl = Knowage.protocol + "://"+ Knowage.host+ ":"+ Knowage.port+ "/knowage";
-	
-	$('#knowage-loader').attr("src",knowageUrl);
-	
-	$('#knowage-loader').on('load', function() {
 		contexts = [];
-		//var enabler = get('enabler');
 		var enabler = $('#enabler').val();
 		var enablerText = capitalize(enabler) + " Enabler";
 		$('#scope_breadcrumb').text(enablerText).attr("href", 'home');
@@ -69,35 +63,7 @@ $(document).ready(function(){
 		catch(error){
 			console.log(error);
 		}
-	});
 });
-
-
-//function setImage(urlToFile, gradient, item){
-//	var ext=[".jpg"];
-//	
-////	if(cfeActive){
-////		var urlToFile = cfeLink+'/'+urlToFile;
-////	}
-//	
-//	for (var i = 0; i < ext.length; i++) {
-//		var file = urlToFile+ext[i];
-//
-//	    $.ajax({
-//	        url: file,
-//	        type:'HEAD',
-//	        crossDomain : true,
-//	        xhrFields: {
-//	            withCredentials: false
-//	        }
-//	    })
-//	        .done(function() {
-//	        	item.find(".catanchor").css('background', 'url('+file+') no-repeat center').css('background-size','cover');
-//	        })
-//	}
-//}
-
-
 
 function setImage(urlToFile, gradient, item){
 	var ext=[".jpg", ".jpeg", ".png"];

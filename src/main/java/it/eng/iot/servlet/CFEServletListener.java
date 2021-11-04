@@ -25,21 +25,21 @@ public class CFEServletListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		String filePath = Conf.getInstance().getString("ImageUpload.path");
-		String destinationScope = Conf.getInstance().getString("ImageUpload.destinationScope");	
+		String destinationScope = Conf.getInstance().getString("ImageUpload.destinationScope");
 		System.out.println("Starting City Front end");
-		if("filesystem".equals(destinationScope)) { 
+		if ("filesystem".equals(destinationScope)) {
 			new File(filePath).mkdirs();
 		}
-		
-		if("true".equalsIgnoreCase(ConfIDM.getInstance().getString("idm.fiware.enabled"))) {
-		
+
+		if ("true".equalsIgnoreCase(ConfIDM.getInstance().getString("idm.fiware.enabled"))) {
+
 			IdentityManager.setBaseUrl(ConfIDM.getInstance().getString("idm.be.host"));
-			IdentityManager.setAdminCredentials(ConfIDM.getInstance().getString("idm.admin.email"), 
-												ConfIDM.getInstance().getString("idm.admin.password"));
+			IdentityManager.setAdminCredentials(ConfIDM.getInstance().getString("idm.admin.email"),
+					ConfIDM.getInstance().getString("idm.admin.password"));
 			IdentityManager.setRestClient(new DefaultRestClient());
 			DataBinder dataBinder = new DefaultDataBinder();
-							  dataBinder.init();
-							  
+			dataBinder.init();
+
 			IdentityManager.setJsonSerde(dataBinder);
 			IdentityManagerUtility.setIdentityManager(new Keyrock7());
 		}

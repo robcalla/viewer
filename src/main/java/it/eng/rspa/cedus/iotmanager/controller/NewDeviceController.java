@@ -17,49 +17,51 @@ import java.util.logging.*;
 @WebServlet("/newdevice")
 public class NewDeviceController extends HttpServlet {
 	private static final long serialVersionUID = 2536975717238521423L;
-	private static final Logger LOGGER = Logger.getLogger(NewDeviceController.class.getName() );
+	private static final Logger LOGGER = Logger.getLogger(NewDeviceController.class.getName());
 
 	public NewDeviceController() {
-        super();
-    }
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		try{ CommonController.doGet(request, response); }
-		catch(Exception e){
-			
+		try {
+			CommonController.doGet(request, response);
+		} catch (Exception e) {
+
 			String scheme = request.getScheme() + "://";
-		    String serverName = request.getServerName();
-		    String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
-		    String contextPath = request.getContextPath();
-						
+			String serverName = request.getServerName();
+			String serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
+			String contextPath = request.getContextPath();
+
 			String redirectTo = scheme + serverName + serverPort + contextPath;
-			
-			LOGGER.log(Level.INFO, "Redirect to "+redirectTo);
-			
+
+			LOGGER.log(Level.INFO, "Redirect to " + redirectTo);
+
 			response.sendRedirect(redirectTo);
 			return;
 
-		}		
-		
+		}
+
 		String selectedScope = request.getParameter("scope");
 		String selectedUrbanservice = request.getParameter("urbanservice");
-		
+
 		String nextJSP = "/WEB-INF/view/newdevice.jsp";
-		if (selectedScope!=null && selectedUrbanservice != null){
-			nextJSP = nextJSP + "?scope="+selectedScope+ "&urbanservice="+selectedUrbanservice;
+		if (selectedScope != null && selectedUrbanservice != null) {
+			nextJSP = nextJSP + "?scope=" + selectedScope + "&urbanservice=" + selectedUrbanservice;
 		}
-		
+
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-		
-		dispatcher.forward(request,response);
-		
-				
+
+		dispatcher.forward(request, response);
+
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setAttribute("currentDevice", request.getParameter("currentDevice"));
-		doGet(request,response);
+		doGet(request, response);
 	}
 
 }

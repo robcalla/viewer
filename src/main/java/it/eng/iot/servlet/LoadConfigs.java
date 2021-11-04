@@ -14,49 +14,53 @@ import org.json.JSONObject;
 import it.eng.iot.utils.PropertyManager;
 
 /**
-* Servlet implementation class LoadConfigs
-*/
+ * Servlet implementation class LoadConfigs
+ */
 @WebServlet("/LoadConfigs")
 public class LoadConfigs extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-   /**
-    * Default constructor.
-    */
-   public LoadConfigs() {
+	/**
+	 * Default constructor.
+	 */
+	public LoadConfigs() {
 
-   }
+	}
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
 
-        Map<String, String> prop = null;
-        JSONObject json;
-        try {
-            prop = PropertyManager.getProperties();
-        }catch (Exception e) {
-            e.printStackTrace();
-            json=new JSONObject();
-            json.put("message", "Exception");
-            out.write(json.toString());
-        }
+		Map<String, String> prop = null;
+		JSONObject json;
+		try {
+			prop = PropertyManager.getProperties();
+		} catch (Exception e) {
+			e.printStackTrace();
+			json = new JSONObject();
+			json.put("message", "Exception");
+			out.write(json.toString());
+		}
 
-        json=new JSONObject(prop);
+		json = new JSONObject(prop);
 
-        out.write(json.toString());
+		out.write(json.toString());
 
-    }
+	}
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    }
+	}
 
 }

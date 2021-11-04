@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>cfe</artifactId>
-	<version>1.16.3</version>
+	<version>1.16.4</version>
 	<packaging>war</packaging>
 
 	<build>
@@ -162,6 +162,11 @@
 		    <artifactId>keycloak-model-jpa</artifactId>
 		    <version>10.0.2</version>
 		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		   <groupId>io.jsonwebtoken</groupId>
+		   <artifactId>jjwt</artifactId>
+		   <version>0.9.1</version>
 		</dependency>
 
 	</dependencies>

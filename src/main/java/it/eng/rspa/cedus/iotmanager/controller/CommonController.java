@@ -22,7 +22,7 @@ import java.util.logging.*;
 public abstract class CommonController {
 
 	private static final Logger LOGGER = Logger.getLogger(AjaxHandler.class.getName());
-	
+
 	static {
 		LogFilter logFilter = new LogFilter();
 		LOGGER.setFilter(logFilter);
@@ -37,40 +37,40 @@ public abstract class CommonController {
 		} else if (request.getParameter("lang") == null && session.getAttribute("lang") == null) {
 			session.setAttribute("lang", Conf.getInstance().getString("default.lang"));
 		}
-		
+
 		KeycloakContext kc = new KeycloakContext(request);
 
 		// Temporary workaround for SSO logout. Should be fixed in Keycloak 12.0.0
-		if(!kc.isValidSession()) {
+		if (!kc.isValidSession()) {
 			session.removeAttribute("token");
-			session.removeAttribute("refresh_token");				
+			session.removeAttribute("refresh_token");
 			session.removeAttribute("userPerms");
 			session.removeAttribute("userIsAdmin");
 			session.removeAttribute("isAdmin");
 			session.removeAttribute("userInfo");
-			session.removeAttribute("username");	
+			session.removeAttribute("username");
 			session.invalidate();
 			throw new Exception();
-		}			
-		
+		}
+
 		AccessToken at = kc.getToken();
 		Set<String> userRoles = kc.getClientRoles();
 		String username = at.getPreferredUsername();
 		request.setAttribute("username", username);
-		
+
 		@SuppressWarnings("unchecked")
 		ArrayList<String> orgs = (ArrayList<String>) at.getOtherClaims().get("organization");
 		@SuppressWarnings("unchecked")
 		ArrayList<String> group = (ArrayList<String>) at.getOtherClaims().get("groups");
-		
+
 		Set<String> orgSet = new HashSet<String>();
 		Set<String> groupSet = new HashSet<String>();
-		if(orgs != null) {
+		if (orgs != null) {
 			for (int i = 0; i < orgs.size(); i++) {
 				orgSet.add(orgs.get(i));
 			}
 		}
-		if(group != null) {
+		if (group != null) {
 			for (int i = 0; i < group.size(); i++) {
 				groupSet.add(group.get(i).toLowerCase());
 			}
@@ -79,16 +79,16 @@ public abstract class CommonController {
 		String token = (String) session.getAttribute("token");
 		String refresh_token = (String) session.getAttribute("refresh_token");
 		User userInfo = (User) session.getAttribute("userInfo");
-		
-		if(token == null) {
+
+		if (token == null) {
 			token = kc.getTokenString();
 			session.setAttribute("token", token);
 		}
-		if(refresh_token == null) {
+		if (refresh_token == null) {
 			refresh_token = kc.getRefreshToken();
 			session.setAttribute("refresh_token", refresh_token);
 		}
-		if(userInfo == null) {
+		if (userInfo == null) {
 			userInfo = new User();
 			userInfo.setId(at.getSubject());
 			userInfo.setUsername(username);
@@ -98,13 +98,13 @@ public abstract class CommonController {
 			userInfo.setGroups(Optional.of(groupSet));
 		}
 		session.setAttribute("userInfo", userInfo);
-		
+
 		try {
 			boolean userIsAdmin = false;
 			boolean cityEnabled = false;
 			boolean facilityEnabled = false;
 			boolean farmEnabled = false;
-			
+
 			for (String rName : userRoles) {
 
 				if ("admin".equalsIgnoreCase(rName)) {
@@ -120,13 +120,13 @@ public abstract class CommonController {
 					farmEnabled = true;
 				}
 			}
-			
+
 			session.setAttribute("userIsAdmin", userIsAdmin);
 			session.setAttribute("cityEnabled", cityEnabled);
 			session.setAttribute("facilityEnabled", facilityEnabled);
 			session.setAttribute("farmEnabled", farmEnabled);
 			session.setAttribute("isTenantEnabled", Conf.getInstance().getString("tenant.enabled"));
-			
+
 			request.setAttribute("userId", at.getId());
 			LOGGER.log(Level.INFO, "Connected userId: " + at.getId());
 		} catch (Exception ex) {

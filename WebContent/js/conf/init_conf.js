@@ -10,10 +10,13 @@ $.ajax({
 });
 
 var Knowage = {};
+var Grafana = {};
 var data4enablers = {};
+var Superset = {};
 var App = {};
 try {
 
+	Knowage.enabled = ConfResponse["frontend.Knowage.enabled"];
 	Knowage.protocol = ConfResponse["frontend.Knowage.protocol"];
 	Knowage.host = ConfResponse["frontend.Knowage.host"];
 	Knowage.port = ConfResponse["frontend.Knowage.port"];
@@ -23,6 +26,16 @@ try {
 	Knowage.defaultFunctionality = ConfResponse["frontend.Knowage.defaultFunctionality"];
 	Knowage.defaultExecutionRole = ConfResponse["frontend.Knowage.defaultExecutionRole"];
 	Knowage.publicFunctionality = ConfResponse["frontend.Knowage.publicFunctionality"];
+	
+	Grafana.enabled = ConfResponse["frontend.Grafana.enabled"];
+	Grafana.protocol = ConfResponse["frontend.Grafana.protocol"];
+	Grafana.host = ConfResponse["frontend.Grafana.host"];
+	Grafana.port = ConfResponse["frontend.Grafana.port"];
+	
+	Superset.enabled = ConfResponse["frontend.Superset.enabled"];
+	Superset.protocol = ConfResponse["frontend.Superset.protocol"];
+	Superset.host = ConfResponse["frontend.Superset.host"];
+	Superset.port = ConfResponse["frontend.Superset.port"];
 
 	data4enablers.city = {};
 	data4enablers.city.cats = ConfResponse["frontend.data4enablers.city.cats"].split("|");
@@ -34,6 +47,7 @@ try {
 	App.context = {};
 	App.context.images = {};
 	App.context.images.path = ConfResponse["frontend.context.images.path"];
+	
 } catch(e) {
 	console.error("Error while loading configurations");
 }

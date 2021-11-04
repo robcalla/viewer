@@ -93,13 +93,6 @@
 				</nav>
 
 			</c:if>
-	<%--
-	<c:if test = "${fn:containsIgnoreCase(urbanServicePermission, 'C')}">
-	 	<a href="#cockpitlinkmodal" class="btn-floating btn-large waves-effect waves-dark" id="cockpit-link"><i class="material-icons">add</i></a>
-	 	<a href="#cockpitselectmodal" class="btn-floating btn-large waves-effect waves-dark" id="change-cockpit-link"><i class="material-icons">autorenew</i></a>
-	 	<a href="#cockpitremove" class="btn-floating btn-large waves-effect waves-dark" id="remove-cockpit-link"><i class="material-icons">close</i></a>
-	</c:if>
-	 --%>
 			<div class="section">
 				<div class="row hide" id="errorMessage"></div>
 
@@ -129,6 +122,8 @@
 			<%@include file="../frames/footer.jspf"%>
 		</div>
 	</div>
+	
+	<iframe id="knowage-loader" class="hide" src=""></iframe>
 
 	<script>
 		var isAdmin = "<c:out value='${isAdmin}'/>";
@@ -137,6 +132,7 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/util.js"></script>
 	<script type="text/javascript" src="js/devices.js"></script>
+	<script type="text/javascript" src="js/managers.js"></script>
 
 
 	<script type="text/javascript">
@@ -154,11 +150,6 @@
 		  );
 
 		 window.onload = function(e){
-// 				$('iframe').on('load', function() {
-// 					console.log("$('iframe').contents().height()::: "+$('iframe').contents().height())
-// 				    $('iframe').height($('iframe').contents().height());
-// 				});
-
 			resizeCockpitPage()
 			window.onresize = function() {
 				resizeCockpitPage()

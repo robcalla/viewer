@@ -8,25 +8,48 @@
 			<div class="row">
 				<div class="input-field col s12 m12 ">
 	                  <select id="chooseType">
-	                  	<option value="knowage" selected>Dashboard Manager</option>
-	                  	<option value="grafana">Grafana/Superset</option>
+	                  	<c:if test = "${isKnowageOn eq true}">
+	                  	<option value="knowage" selected>Native Knowage</option>
+	                  	</c:if>
+	                  	<c:if test = "${isGrafanaOn eq true}">
+	                  	<option value="grafana">Native Grafana</option>
+	                  	</c:if>
+	                  	<c:if test = "${isSupersetOn eq true}">
+	                  	<option value="superset">Native Superset</option>
+	                  	</c:if>
+	                  	<option value="custom">Custom</option>
 	                  </select>
 	                  <label>Choose dashboard type</label>
               	</div>
+              	<c:if test = "${isKnowageOn eq true}">
               	<div id="knowage_choose" class="input-field col s12">
               		<label for="cockpitname">Choose a dashboard from this list:</label>
 					<input id="documentname" autocomplete="off" list="documentnamefield" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" id="cockpitname" name="cockpitname" class="documentSelectOption validate" maxlength="200"/>
 					<datalist id="documentnamefield" name="documentnamefield" class="documentSelectOption browser-default"></datalist>
-
 				</div>
+				</c:if>
+				<c:if test = "${isGrafanaOn eq true}">
 				<div id="grafana_choose" class="input-field col s12" style="display:none">
+              		<label for="grafananame">Choose a dashboard from this list:</label>
+					<input id="grafanadashboardname" autocomplete="off" list="grafananamefield" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" id="grafananame" name="grafananame" class="documentSelectOption validate" maxlength="200"/>
+					<datalist id="grafananamefield" name="grafananamefield" class="documentSelectOption browser-default"></datalist>
+				</div>
+				</c:if>
+				<c:if test = "${isSupersetOn eq true}">
+				<div id="superset_choose" class="input-field col s12" style="display:none">
+              		<label for="supersetname">Choose a dashboard from this list:</label>
+					<input id="supersetdashboardname" autocomplete="off" list="supersetnamefield" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" id="supersetname" name="supersetname" class="documentSelectOption validate" maxlength="200"/>
+					<datalist id="supersetnamefield" name="supersetnamefield" class="documentSelectOption browser-default"></datalist>
+				</div>
+				</c:if>
+				<div id="custom_choose" class="input-field col s12" style="display:none">
 					<div class="input-field col s12">
-						<input id="dashboardname" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" name="grafananame" class="documentSelectOption validate" maxlength="200"/>
-						<label for="grafananame">Enter the name of the dashboard or panel:</label>
+						<input id="dashboardname" pattern="^[^\s]([a-zA-Z0-9-_]+(\s[a-zA-Z0-9-_]+)*)" type="text" name="customname" class="documentSelectOption validate" maxlength="200"/>
+						<label for="customname">Enter the name of the dashboard or panel:</label>
 					</div>
 					<div class="input-field col s12">
-						<input id="dashboardurl" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" type="text" name="grafanaurl" class="documentSelectOption validate" maxlength="200"/>
-						<label for="grafanaurl">Enter the url of the dashboard or panel:</label>
+						<input id="dashboardurl" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)" type="text" name="customurl" class="documentSelectOption validate" maxlength="200"/>
+						<label for="customurl">Enter the url of the dashboard or panel:</label>
 					</div>
 				</div>
 			</div>

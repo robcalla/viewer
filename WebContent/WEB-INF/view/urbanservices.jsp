@@ -9,7 +9,7 @@
 <c:set var = "isAdmin" value = "${sessionScope.userIsAdmin}"/> 
 <c:set var = "categoryPerms" value = "${requestScope.categoryPerms}"/> 
 <c:set var = "userId" value = "${sessionScope.userInfo.getId()}"/>
-
+<c:set var = "isTenantEnabled" value = "${sessionScope.isTenantEnabled}"/>
 
 <html class="iotmanager">
 <head>
@@ -71,7 +71,7 @@
 					<%@include file="../frames/urbanserviceitem.jspf" %>
 					<div class="row">
 						<div class="col s12 m4 l3 urbanserviceitem" id="newurbanservicetrigger">					
-							<c:if test = "${isAdmin eq true || categoryPerms.getCanCreate() eq true}">
+							<c:if test = "${(isAdmin eq true || categoryPerms.getCanCreate() eq true) && isTenantEnabled eq false}">
 								<div class="hoverable z-depth-1 block nopadding" >
 									<a href="#newsubcatmodal" class="serviceanchor center-align white-text urbanservicename">
 										<i class="material-icons">add</i>

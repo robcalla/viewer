@@ -116,8 +116,6 @@
 				</div>
 				
 			</div>
-			<iframe id="knowage-loader" class="hide" src=""></iframe>
-
 			<%@include file="../frames/messages.jspf"%>
 		</div>
 		<div id="footerLayout">

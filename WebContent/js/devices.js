@@ -22,7 +22,7 @@ $(document).ready(function(){
 	getServiceName(scopeId);
 	var urbanserviceId = get('urbanservice');
 	getServicePathName(scopeId, urbanserviceId);
-
+	
 });
 	
 
@@ -98,16 +98,16 @@ function getCockpitName(urbanService) {
 				$("#change-cockpit-link").parent().addClass("hide");
 				renderCockpit(dashboardListGlobal[0].id);
 			}
-			else if (dashboardListGlobal.length == 1 && dashboardListGlobal[0].type == "grafana") {
+			else if (dashboardListGlobal.length == 1 && dashboardListGlobal[0].type !== "knowage") {
 				$("#change-cockpit-link").parent().addClass("hide");
-				renderGrafana(dashboardListGlobal[0]);
+				renderEmbed(dashboardListGlobal[0]);
 			}
 			else {
 				cNames.forEach(function(d){
 					var dashboard = d;
 					$('#cockpitnames').append($('<option>', {
 					    value: dashboard.id,
-					    text: dashboard.id
+					    text: dashboard.id + " (" + dashboard.type + ")"
 				    }));				 					
 				});
 				$('#cockpitselectmodal').modal('open'); 
@@ -141,7 +141,7 @@ function renderCockpit(cockpitName) {
 	}
 }
 
-function renderGrafana(dashboard) {
+function renderEmbed(dashboard) {
 	if(dashboard.url!=null && dashboard.url.trim().length != 0) {
 		activeDashboard = dashboardListGlobal.filter(dashboard => dashboard.id == dashboard.id);
 		//Hide No cockpit linked div
@@ -160,29 +160,58 @@ function renderGrafana(dashboard) {
 }
 
 
-$(document).on('submit','#cockpitnameform',function(){
+/*$(document).on('submit','#cockpitnameform',function(){
 	var cockpitName = $('#documentname').val();
 	if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0)
 		setCockpitName(cockpitName, success_callback);
-	/*else {
+	else {
 		$('#cockpitnamefield').css("border-bottom-color", "red");
 		$('#cockpitnamefield').css("box-shadow", "0 1px 0 0 red");
 		return false;
 	}
-	*/
-});
+	
+});*/
 
 function addNewDashboard() {
 	var type = $("select#chooseType option:checked").val();
-	if(type == "knowage") {
+	switch (type) {
+	  case 'knowage':
 		var cockpitName = $('#documentname').val();
-		if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0)
+		if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0) {
 			setCockpitName(cockpitName, "", type, function(data) {location.replace("/index");});
-	} else if (type == "grafana") {
+		} else {
+			alert("Dashboard with the same name already exists in this category.")	
+		}				
+	    break;	
+	  case 'grafana':
+		var cockpitName = $('#grafanadashboardname').val();
+		var cockpit = grafanaDashboards.filter(d => d.title === cockpitName);
+		var cockpitUrl = grafanaUrl + cockpit[0].url + "?orgId=1&kiosk";
+		if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0) {
+			setCockpitName(cockpitName, cockpitUrl, type, function(data) {location.replace("/index");});	
+	    } else {
+			alert("Dashboard with the same name already exists in this category.")	
+		}
+		break;
+	  case 'superset':
+		var cockpitName = $('#supersetdashboardname').val();
+		var cockpit = supersetDashboards.filter(d => d.dashboard_title === cockpitName);
+		var cockpitUrl = supersetUrl + cockpit[0].url + "?standalone=2";
+		if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0) {
+			setCockpitName(cockpitName, cockpitUrl, type, function(data) {location.replace("/index");});	
+	    } else {
+			alert("Dashboard with the same name already exists in this category.")	
+		}
+		break;
+	  case 'custom':
 		var cockpitName = $('#dashboardname').val();
 		var cockpitUrl = $('#dashboardurl').val();
-		if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0)
+		if(cockpitName.trim().length > 0 && (dashboardListGlobal.filter(d => d.id === cockpitName)).length <= 0) {
 			setCockpitName(cockpitName, cockpitUrl, type, function(data) {location.replace("/index");});
+		} else {
+			alert("Dashboard with the same name already exists in this category.")	
+		}
+		break;
 	}
 }
 
@@ -192,25 +221,46 @@ $(document).on('submit','#cockpitselectnameform',function(){
 	activeDashboard = dashboardListGlobal.filter(dashboard => dashboard.id == cockpitName);
 	if(activeDashboard[0].type == "knowage") {
 		renderCockpit(cockpitName);
-	} else if (activeDashboard[0].type == "grafana") {
-		renderGrafana(activeDashboard[0]);
+	} else if (activeDashboard[0].type !== "knowage") {
+		renderEmbed(activeDashboard[0]);
 	}
 	
 });
 
 $(document).on('click','.modal-close',function(){
-	$('#cockpitnamefield').val(activeDashboard[0].id);
+	if(activeDashboard[0]) {
+		$('#cockpitnamefield').val(activeDashboard[0].id);
+	}	
 	$('#cockpitnamefield').css("border-bottom-color", "#9e9e9e");
 	$('#cockpitnamefield').css("box-shadow", "none");
 });
 
 $("#chooseType").on('change', function() {
-	if($("select#chooseType option:checked").val() == "grafana") {
+	switch ($("select#chooseType option:checked").val()) {
+	  case 'knowage':
+		$("#knowage_choose").show();
+		$("#grafana_choose").hide();
+		$("#superset_choose").hide();
+	    $("#custom_choose").hide();		
+	    break;
+	  case 'grafana':
 		$("#knowage_choose").hide();
 		$("#grafana_choose").show();
-	} else if ($("select#chooseType option:checked").val() == "knowage") {
+		$("#superset_choose").hide();
+	    $("#custom_choose").hide();		
+	    break;
+	  case 'superset':
+	    $("#knowage_choose").hide();
 		$("#grafana_choose").hide();
-		$("#knowage_choose").show();
+		$("#superset_choose").show();
+	    $("#custom_choose").hide();
+	    break;
+	  case 'custom':
+		$("#knowage_choose").hide();
+		$("#grafana_choose").hide();
+		$("#superset_choose").hide();
+	    $("#custom_choose").show();
+		break;
 	}
 });
 

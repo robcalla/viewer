@@ -16,28 +16,29 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/logout")
 public class Logout extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 693724303976303888L;
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String nofollow = request.getParameter("nofollow");
-		
+
 		HttpSession session = request.getSession();
 		session.removeAttribute("token");
 		session.removeAttribute("refresh_token");
-		
+
 		session.removeAttribute("userInfo");
 		session.removeAttribute("userPerms");
 		session.removeAttribute("userIsAdmin");
 		session.removeAttribute("isAdmin");
-		
+
 		session.removeAttribute("isMultiEnablerOn");
 		session.removeAttribute("enabler");
-		
+
 		session.invalidate();
-		
+
 		if (!("true").equalsIgnoreCase(nofollow)) {
 			String host = ConfIDM.getInstance().getString("keycloak.host");
 			String logoutUrl = ConfIDM.getInstance().getString("keycloak.logout");
