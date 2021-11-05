@@ -34,7 +34,7 @@ jobs:
           name: Build image
           command: |
              docker login $REGISTRY_HOSTNAME -u opsi -p $REGISTRY_PASSWORD
-             docker build -t $REGISTRY_HOSTNAME/$DOCKER_IMAGE . -f docker/Dockerfile
+             docker build -t $REGISTRY_HOSTNAME/$DOCKER_IMAGE:current . -f docker/Dockerfile
 
       - run:
           name: Cache docker image
@@ -63,11 +63,20 @@ jobs:
           command: |
             docker login $REGISTRY_HOSTNAME -u opsi -p $REGISTRY_PASSWORD
             if [ -n "$CIRCLE_TAG" ]; then
-                docker tag $REGISTRY_HOSTNAME/$DOCKER_IMAGE:latest $REGISTRY_HOSTNAME/$DOCKER_IMAGE:$CIRCLE_TAG
+                docker tag $REGISTRY_HOSTNAME/$DOCKER_IMAGE:current $REGISTRY_HOSTNAME/$DOCKER_IMAGE:$CIRCLE_TAG
                 docker push $REGISTRY_HOSTNAME/$DOCKER_IMAGE:$CIRCLE_TAG
                 exit 0
             fi
-            docker push $REGISTRY_HOSTNAME/$DOCKER_IMAGE:latest
+            if [ "$CIRCLE_BRANCH" == "beta" ]; then
+                docker tag $REGISTRY_HOSTNAME/$DOCKER_IMAGE:current $REGISTRY_HOSTNAME/$DOCKER_IMAGE:beta
+                docker push $REGISTRY_HOSTNAME/$DOCKER_IMAGE:beta
+                exit 0
+            fi
+            if [ "$CIRCLE_BRANCH" == "main" ]; then
+                docker tag $REGISTRY_HOSTNAME/$DOCKER_IMAGE:current $REGISTRY_HOSTNAME/$DOCKER_IMAGE:latest
+                docker push $REGISTRY_HOSTNAME/$DOCKER_IMAGE:latest
+                exit 0
+            fi
 
 workflows:
   version: 2
@@ -115,6 +124,7 @@ workflows:
             branches:
               only:
                 - main
+                - beta
 
   build-and-deploy-tag:
     jobs:
