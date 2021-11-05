@@ -34,7 +34,7 @@ jobs:
           name: Build image
           command: |
              docker login $REGISTRY_HOSTNAME -u opsi -p $REGISTRY_PASSWORD
-             docker build -t $REGISTRY_HOSTNAME/$DOCKER_IMAGE . -f docker/Dockerfile
+             docker build -t $REGISTRY_HOSTNAME/$DOCKER_IMAGE:current . -f docker/Dockerfile
 
       - run:
           name: Cache docker image
